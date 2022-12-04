@@ -1,3 +1,4 @@
 rootProject.name = 'hexagonal-practice'
+include 'hexagonalpractice-infrastructure'
 include 'hexagonalpractice-application'
 
