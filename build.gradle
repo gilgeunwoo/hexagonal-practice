@@ -1,58 +1,22 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.5'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
+	id 'org.springframework.boot' version '2.7.6'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
-group = 'com.example.hexagonalpractice'
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
 
 repositories {
 	mavenCentral()
 }
 
-subprojects {
-	group = 'com.example.hexagonalpractice'
-	version = '0.0.1-SNAPSHOT'
-	sourceCompatibility = '11'
-
-	apply plugin: 'java'
-	apply plugin: 'io.spring.dependency-management'
-	apply plugin: 'org.springframework.boot'
-
-	repositories {
-		mavenCentral()
-	}
-
-	dependencies {
-		compileOnly 'org.projectlombok:lombok'
-		annotationProcessor 'org.projectlombok:lombok'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.4'
-		testImplementation 'org.assertj:assertj-core:3.22.0'
-		testImplementation 'org.mockito:mockito-core:3.8.0'
-	}
-
-	test {
-		useJUnitPlatform()
-	}
-
-	jar {
-		enabled = false
-	}
-}
-
-springBoot {
-	mainClass = 'com.example.hexagonalpractice.HexagonalPracticeApplication'
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
-
 	useJUnitPlatform()
 }
