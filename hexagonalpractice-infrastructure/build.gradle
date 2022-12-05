@@ -28,9 +28,6 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
-    // security
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
