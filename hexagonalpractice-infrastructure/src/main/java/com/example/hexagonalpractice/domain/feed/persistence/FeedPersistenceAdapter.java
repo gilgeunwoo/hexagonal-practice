@@ -1,5 +1,6 @@
 package com.example.hexagonalpractice.domain.feed.persistence;
 
+import com.example.hexagonalpractice.domain.feed.domain.Feed;
 import com.example.hexagonalpractice.domain.feed.mapper.FeedMapper;
 import com.example.hexagonalpractice.domain.feed.persistence.entity.FeedEntity;
 import com.example.hexagonalpractice.domain.feed.spi.FeedPort;
@@ -18,5 +19,18 @@ public class FeedPersistenceAdapter implements FeedPort {
 
     public Optional<FeedEntity> findFeedById(UUID id) {
         return feedRepository.findById(id);
+    }
+
+    @Override
+    public void saveFeed(Feed feed) {
+        feedRepository.save(
+                feedMapper.domainToEntity(feed)
+        );
+    }
+
+    public UUID saveFeedAndGetId(Feed feed) {
+        return feedRepository.save(
+                feedMapper.domainToEntity(feed)
+        ).getId();
     }
 }
