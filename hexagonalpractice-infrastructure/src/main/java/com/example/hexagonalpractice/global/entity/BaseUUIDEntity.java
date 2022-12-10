@@ -15,7 +15,7 @@ import java.util.UUID;
 @SuperBuilder
 @NoArgsConstructor
 @MappedSuperclass
-public abstract class BaseUUIDEntity {
+public abstract class BaseUUIDEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(generator = "uuid2")
