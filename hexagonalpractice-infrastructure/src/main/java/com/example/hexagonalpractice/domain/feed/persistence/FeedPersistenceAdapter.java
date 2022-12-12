@@ -1,6 +1,7 @@
 package com.example.hexagonalpractice.domain.feed.persistence;
 
 import com.example.hexagonalpractice.domain.feed.domain.Feed;
+import com.example.hexagonalpractice.domain.feed.exception.FeedNotFoundException;
 import com.example.hexagonalpractice.domain.feed.mapper.FeedMapper;
 import com.example.hexagonalpractice.domain.feed.persistence.entity.FeedEntity;
 import com.example.hexagonalpractice.domain.feed.spi.FeedPort;
@@ -19,10 +20,6 @@ public class FeedPersistenceAdapter implements FeedPort {
     private final FeedRepository feedRepository;
     private final FeedMapper feedMapper;
 
-    public Optional<FeedEntity> findFeedById(UUID id) {
-        return feedRepository.findById(id);
-    }
-
     @Override
     public void saveFeed(Feed feed) {
         feedRepository.save(
@@ -30,16 +27,26 @@ public class FeedPersistenceAdapter implements FeedPort {
         );
     }
 
+    @Override
     public UUID saveFeedAndGetId(Feed feed) {
         return feedRepository.save(
                 feedMapper.domainToEntity(feed)
         ).getId();
     }
 
+    @Override
     public List<Feed> queryFeedAllByOrderByCreatedAtDesc() {
         return feedRepository.findAllByOrderByCreateAtDesc()
                 .stream()
                 .map(feedMapper::entityToDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Feed queryFeedById(UUID id) {
+        return feedMapper.entityToDomain(
+                feedRepository.findById(id)
+                        .orElseThrow(() -> FeedNotFoundException.EXCEPTION)
+        );
     }
 }

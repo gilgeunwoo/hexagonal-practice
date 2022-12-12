@@ -16,6 +16,7 @@ public class QueryFeedListUseCase implements QueryFeedListPort {
 
     private final CommendFeedPort commendFeedPort;
 
+    @Override
     public QueryFeedListResponse execute() {
 
         List<FeedElement> feedList = commendFeedPort.queryFeedAllByOrderByCreatedAtDesc()
