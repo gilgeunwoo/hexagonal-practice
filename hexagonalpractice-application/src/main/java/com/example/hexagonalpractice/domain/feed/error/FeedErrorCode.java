@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum UserErrorCode implements ErrorProperty {
+public enum FeedErrorCode implements ErrorProperty {
 
     FEED_NOT_FOUND(404, "Feed Not Found");
 
