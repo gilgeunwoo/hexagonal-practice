@@ -16,4 +16,12 @@ public class Feed {
     private final String title;
 
     private final String content;
+
+    public Feed update(String title, String content) {
+        return Feed.builder()
+                .id(this.id)
+                .title(title)
+                .content(content)
+                .build();
+    }
 }
