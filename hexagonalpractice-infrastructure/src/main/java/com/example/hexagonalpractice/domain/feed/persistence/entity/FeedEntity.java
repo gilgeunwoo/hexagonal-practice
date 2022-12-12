@@ -1,5 +1,6 @@
 package com.example.hexagonalpractice.domain.feed.persistence.entity;
 
+import com.example.hexagonalpractice.global.entity.BaseTimeEntity;
 import com.example.hexagonalpractice.global.entity.BaseUUIDEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
