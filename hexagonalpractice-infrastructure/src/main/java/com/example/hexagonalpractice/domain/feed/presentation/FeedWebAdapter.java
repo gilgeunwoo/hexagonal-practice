@@ -1,8 +1,10 @@
 package com.example.hexagonalpractice.domain.feed.presentation;
 
 import com.example.hexagonalpractice.domain.feed.api.CreateFeedPort;
+import com.example.hexagonalpractice.domain.feed.api.QueryFeedListPort;
 import com.example.hexagonalpractice.domain.feed.api.dto.request.DomainCreateFeedRequest;
 import com.example.hexagonalpractice.domain.feed.api.dto.response.CreateFeedResponse;
+import com.example.hexagonalpractice.domain.feed.api.dto.response.QueryFeedListResponse;
 import com.example.hexagonalpractice.domain.feed.presentation.dto.request.WebCreateFeedRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import javax.validation.Valid;
 public class FeedWebAdapter {
 
     private final CreateFeedPort createFeedPort;
+    private final QueryFeedListPort queryFeedListPort;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -25,5 +28,10 @@ public class FeedWebAdapter {
                 .content(request.getContent())
                 .build()
         );
+    }
+
+    @GetMapping
+    public QueryFeedListResponse getList() {
+        return queryFeedListPort.execute();
     }
 }
