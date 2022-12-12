@@ -7,8 +7,10 @@ import com.example.hexagonalpractice.domain.feed.spi.FeedPort;
 import com.example.hexagonalpractice.global.annotation.Adapter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Adapter
@@ -32,5 +34,12 @@ public class FeedPersistenceAdapter implements FeedPort {
         return feedRepository.save(
                 feedMapper.domainToEntity(feed)
         ).getId();
+    }
+
+    public List<Feed> queryFeedAllByOrderByCreatedAtDesc() {
+        return feedRepository.findAllByOrderByCreateAtDesc()
+                .stream()
+                .map(feedMapper::entityToDomain)
+                .collect(Collectors.toList());
     }
 }
