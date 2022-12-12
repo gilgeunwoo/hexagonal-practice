@@ -10,4 +10,5 @@ public interface CommendFeedPort {
     void saveFeed(Feed feed);
     UUID saveFeedAndGetId(Feed feed);
     List<Feed> queryFeedAllByOrderByCreatedAtDesc();
+    Feed queryFeedById(UUID id);
 }
