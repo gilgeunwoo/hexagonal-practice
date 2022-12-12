@@ -1,6 +1,6 @@
 package com.example.hexagonalpractice.domain.feed.exception;
 
-import com.example.hexagonalpractice.domain.feed.error.UserErrorCode;
+import com.example.hexagonalpractice.domain.feed.error.FeedErrorCode;
 import com.example.hexagonalpractice.error.CustomException;
 
 public class FeedNotFoundException extends CustomException {
@@ -9,6 +9,6 @@ public class FeedNotFoundException extends CustomException {
             new FeedNotFoundException();
 
     private FeedNotFoundException() {
-        super(UserErrorCode.FEED_NOT_FOUND);
+        super(FeedErrorCode.FEED_NOT_FOUND);
     }
 }
